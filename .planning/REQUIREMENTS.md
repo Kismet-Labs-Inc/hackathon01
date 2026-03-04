@@ -16,13 +16,13 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 
 - [x] **MOOD-01**: User can select a mood from 6 options (Comfort Food, Something Light, Adventurous, Impress a Date, Hungover, Sweet Tooth)
 - [x] **MOOD-02**: User can tap "Surprise Me" for a random mood pick
-- [ ] **RECO-01**: User sees AI-generated dish recommendations ranked by match %
-- [ ] **RECO-02**: Each recommendation includes a witty reasoning text explaining why it matches the mood
-- [ ] **RECO-03**: Surprise Me shows a single card with a dramatic reveal animation
+- [x] **RECO-01**: User sees AI-generated dish recommendations ranked by match %
+- [x] **RECO-02**: Each recommendation includes a witty reasoning text explaining why it matches the mood
+- [x] **RECO-03**: Surprise Me shows a single card with a dramatic reveal animation
 
 ### Selection & Order
 
-- [ ] **ORDR-01**: User can save items ("I'll get this") and see saved state on cards
+- [x] **ORDR-01**: User can save items ("I'll get this") and see saved state on cards
 - [ ] **ORDR-02**: User can view order summary with total cost and total calories
 
 ### Filters
@@ -86,10 +86,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MENU-02 | Phase 2 | Complete |
 | MOOD-01 | Phase 3 | Complete |
 | MOOD-02 | Phase 3 | Complete |
-| RECO-01 | Phase 3 | Pending |
-| RECO-02 | Phase 3 | Pending |
-| RECO-03 | Phase 3 | Pending |
-| ORDR-01 | Phase 3 | Pending |
+| RECO-01 | Phase 3 | Complete |
+| RECO-02 | Phase 3 | Complete |
+| RECO-03 | Phase 3 | Complete |
+| ORDR-01 | Phase 3 | Complete |
 | ORDR-02 | Phase 3 | Pending |
 | FILT-01 | Phase 4 | Pending |
 | FILT-02 | Phase 4 | Pending |

@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Menu Scanning | 0/2 | Not started | - |
-| 3. Recommendations & Ordering | 1/3 | In progress | - |
+| 3. Recommendations & Ordering | 2/3 | In Progress|  |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |

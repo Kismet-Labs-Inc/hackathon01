@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-stopped_at: Completed 03-01 Recommendation data layer & mood screen
-last_updated: "2026-03-04T20:16:31Z"
-last_activity: 2026-03-05 -- Completed 03-01 Recommendation data layer & mood screen
+stopped_at: Completed 03-02 Results screen with recommendation cards
+last_updated: "2026-03-04T20:21:45Z"
+last_activity: 2026-03-05 -- Completed 03-02 Results screen with recommendation cards
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 7
-  completed_plans: 5
-  percent: 71
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -21,22 +21,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-04)
 
 **Core value:** Users can scan any restaurant menu and instantly get mood-matched food recommendations they're excited to order.
-**Current focus:** Phase 3: Recommendations & Ordering -- mood screen done, results screen next
+**Current focus:** Phase 3: Recommendations & Ordering -- results screen done, order summary next
 
 ## Current Position
 
 Phase: 3 of 4 (Recommendations & Ordering)
-Plan: 1 of 3 in current phase (03-01 complete)
+Plan: 2 of 3 in current phase (03-02 complete)
 Status: In progress
-Last activity: 2026-03-05 -- Completed 03-01 Recommendation data layer & mood screen
+Last activity: 2026-03-05 -- Completed 03-02 Results screen with recommendation cards
 
-Progress: [███████---] 71% (5/7 plans)
+Progress: [█████████░] 86% (6/7 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 8min
+- Total plans completed: 6
+- Average duration: 7min
 - Total execution time: 0.7 hours
 
 **By Phase:**
@@ -45,10 +45,10 @@ Progress: [███████---] 71% (5/7 plans)
 |-------|-------|-------|----------|
 | 01-foundation | 2 | 20min | 10min |
 | 02-menu-scanning | 2 | 17min | 8.5min |
-| 03-recommendations-ordering | 1 | 2min | 2min |
+| 03-recommendations-ordering | 2 | 4min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (15min), 02-01 (2min), 02-02 (15min), 03-01 (2min)
+- Last 5 plans: 01-02 (15min), 02-01 (2min), 02-02 (15min), 03-01 (2min), 03-02 (2min)
 - Trend: Fast
 
 *Updated after each plan completion*
@@ -76,6 +76,9 @@ Recent decisions affecting current work:
 - 03-01: Claude API uses claude-opus-4-6 with fetch() and anthropic-dangerous-direct-browser-access header
 - 03-01: Fallback recommendations keyed by mood id with witty copy for demo safety
 - 03-01: Tap-and-go mood cards with 500ms delay before navigation (no confirm button)
+- 03-02: API key via expo-constants expoConfig.extra for safe runtime access
+- 03-02: Surprise Me picks random rec from full results rather than re-fetching
+- 03-02: Max 1 re-roll in Surprise Me to keep demo flow quick
 
 ### Pending Todos
 
@@ -89,6 +92,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-04T20:16:31Z
-Stopped at: Completed 03-01 Recommendation data layer & mood screen
-Resume file: .planning/phases/03-recommendations-ordering/03-02-PLAN.md
+Last session: 2026-03-04T20:21:45Z
+Stopped at: Completed 03-02 Results screen with recommendation cards
+Resume file: .planning/phases/03-recommendations-ordering/03-03-PLAN.md
