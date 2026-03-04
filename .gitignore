@@ -26,6 +26,9 @@ web-build/
 .env
 .env*.local
 
+# API keys
+src/constants/apiKeys.ts
+
 # local Claude preferences
 .claude/settings.local.json
 
