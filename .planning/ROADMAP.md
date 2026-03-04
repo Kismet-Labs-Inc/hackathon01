@@ -28,10 +28,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Dark theme renders correctly -- #0A0A0A background, #E8734A coral accent, Plus Jakarta Sans font loaded
   3. Navigation routes exist for all screens (welcome, scan, mood, results, order) even if most are placeholder
   4. TypeScript interfaces for MenuItem, Recommendation, and Mood are defined and importable
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md -- Expo scaffold, design system tokens, TypeScript interfaces, navigation skeleton
+- [ ] 01-02-PLAN.md -- Polished Welcome screen matching Stitch mockup, styled placeholder screens
 
 ### Phase 2: Menu Scanning
 **Goal**: User can photograph a restaurant menu and see it parsed into structured dish data
@@ -83,7 +84,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/? | Not started | - |
+| 1. Foundation | 0/2 | Planning complete | - |
 | 2. Menu Scanning | 0/? | Not started | - |
 | 3. Recommendations & Ordering | 0/? | Not started | - |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |
