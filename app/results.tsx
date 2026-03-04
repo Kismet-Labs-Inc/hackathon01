@@ -1,43 +1,79 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { BackButton } from "@/components/ui/BackButton";
+import { colors } from "@/theme/tokens";
 
 export default function ResultsScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
   return (
-    <View className="flex-1 bg-dark">
-      {/* Floating back button */}
-      <Pressable
-        onPress={() => router.back()}
-        className="absolute z-10 bg-card rounded-full w-11 h-11 items-center justify-center active:opacity-70"
-        style={{ top: insets.top + 12, left: 16 }}
-      >
-        <Text className="text-white text-lg">{"\u2190"}</Text>
-      </Pressable>
+    <View style={styles.container}>
+      <BackButton />
 
       {/* Content */}
-      <View className="flex-1 items-center justify-center px-8">
-        <Text className="text-white text-3xl font-jakarta-bold mb-2">
-          Results
-        </Text>
-        <Text className="text-gray text-base font-jakarta text-center">
-          Your AI-matched recommendations
-        </Text>
+      <View style={styles.content}>
+        <Text style={styles.screenName}>Results</Text>
+        <Text style={styles.description}>AI-matched recommendations</Text>
       </View>
 
       {/* Next button */}
-      <View className="px-8 pb-12">
+      <View style={[styles.bottomAction, { paddingBottom: insets.bottom + 24 }]}>
         <Pressable
           onPress={() => router.push("/order")}
-          className="bg-coral rounded-full py-4 active:opacity-80"
+          style={({ pressed }) => [
+            styles.nextButton,
+            pressed && styles.nextButtonPressed,
+          ]}
         >
-          <Text className="text-white text-lg font-jakarta-bold text-center">
-            Next: Order
-          </Text>
+          <Text style={styles.nextButtonText}>Next: Order Summary</Text>
         </Pressable>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.bg,
+  },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 24,
+  },
+  screenName: {
+    color: colors.white,
+    fontSize: 28,
+    fontFamily: "PlusJakartaSans_700Bold",
+    marginBottom: 8,
+  },
+  description: {
+    color: colors.gray,
+    fontSize: 16,
+    fontFamily: "PlusJakartaSans_400Regular",
+    textAlign: "center",
+  },
+  bottomAction: {
+    paddingHorizontal: 24,
+  },
+  nextButton: {
+    backgroundColor: colors.coral,
+    borderRadius: 9999,
+    height: 48,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  nextButtonPressed: {
+    transform: [{ scale: 0.97 }],
+    opacity: 0.9,
+  },
+  nextButtonText: {
+    color: colors.white,
+    fontSize: 16,
+    fontFamily: "PlusJakartaSans_600SemiBold",
+  },
+});
