@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Expo project scaffold, design system, typed interfaces, Welcome screen (completed 2026-03-04)
 - [ ] **Phase 2: Menu Scanning** - Camera/gallery photo capture, Gemini OCR pipeline, structured menu data
-- [ ] **Phase 3: Recommendations & Ordering** - Mood selection, AI recommendations, save items, order summary -- the complete demo loop
+- [x] **Phase 3: Recommendations & Ordering** - Mood selection, AI recommendations, save items, order summary -- the complete demo loop (completed 2026-03-04)
 - [ ] **Phase 4: Extras & Demo Hardening** - Filters, post-meal rating, cached fallbacks, visual polish for stage
 
 ## Phase Details
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Menu Scanning | 0/2 | Not started | - |
-| 3. Recommendations & Ordering | 2/3 | In Progress|  |
+| 3. Recommendations & Ordering | 3/3 | Complete   | 2026-03-04 |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |

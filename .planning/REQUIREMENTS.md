@@ -23,7 +23,7 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 ### Selection & Order
 
 - [x] **ORDR-01**: User can save items ("I'll get this") and see saved state on cards
-- [ ] **ORDR-02**: User can view order summary with total cost and total calories
+- [x] **ORDR-02**: User can view order summary with total cost and total calories
 
 ### Filters
 
@@ -90,7 +90,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | RECO-02 | Phase 3 | Complete |
 | RECO-03 | Phase 3 | Complete |
 | ORDR-01 | Phase 3 | Complete |
-| ORDR-02 | Phase 3 | Pending |
+| ORDR-02 | Phase 3 | Complete |
 | FILT-01 | Phase 4 | Pending |
 | FILT-02 | Phase 4 | Pending |
 | FILT-03 | Phase 4 | Pending |
