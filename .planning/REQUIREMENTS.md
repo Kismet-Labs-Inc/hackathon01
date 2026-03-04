@@ -14,8 +14,8 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 
 ### Mood & Recommendations
 
-- [ ] **MOOD-01**: User can select a mood from 6 options (Comfort Food, Something Light, Adventurous, Impress a Date, Hungover, Sweet Tooth)
-- [ ] **MOOD-02**: User can tap "Surprise Me" for a random mood pick
+- [x] **MOOD-01**: User can select a mood from 6 options (Comfort Food, Something Light, Adventurous, Impress a Date, Hungover, Sweet Tooth)
+- [x] **MOOD-02**: User can tap "Surprise Me" for a random mood pick
 - [ ] **RECO-01**: User sees AI-generated dish recommendations ranked by match %
 - [ ] **RECO-02**: Each recommendation includes a witty reasoning text explaining why it matches the mood
 - [ ] **RECO-03**: Surprise Me shows a single card with a dramatic reveal animation
@@ -84,8 +84,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUN-02 | Phase 1 | Complete |
 | MENU-01 | Phase 2 | Complete |
 | MENU-02 | Phase 2 | Complete |
-| MOOD-01 | Phase 3 | Pending |
-| MOOD-02 | Phase 3 | Pending |
+| MOOD-01 | Phase 3 | Complete |
+| MOOD-02 | Phase 3 | Complete |
 | RECO-01 | Phase 3 | Pending |
 | RECO-02 | Phase 3 | Pending |
 | RECO-03 | Phase 3 | Pending |

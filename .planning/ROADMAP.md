@@ -62,7 +62,7 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 03-01-PLAN.md -- Recommendation store, Claude API service, fallback cache, mood selection screen
+- [x] 03-01-PLAN.md -- Recommendation store, Claude API service, fallback cache, mood selection screen
 - [ ] 03-02-PLAN.md -- Results screen with recommendation cards, save toggle, sticky bar, Surprise Me reveal
 - [ ] 03-03-PLAN.md -- Order summary screen with saved items, totals, and demo restart
 
@@ -89,5 +89,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Menu Scanning | 0/2 | Not started | - |
-| 3. Recommendations & Ordering | 0/3 | Not started | - |
+| 3. Recommendations & Ordering | 1/3 | In progress | - |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |
