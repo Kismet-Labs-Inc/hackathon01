@@ -65,9 +65,9 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 
 | Feature | Reason |
 |---------|--------|
-| User accounts / authentication | Zero onboarding by design — show value first |
+| User accounts / authentication | Zero onboarding by design -- show value first |
 | Backend / database persistence | In-memory for hackathon demo, no server needed |
-| Payment integration | Not core value prop — order summary shows totals |
+| Payment integration | Not core value prop -- order summary shows totals |
 | Multi-language menu translation | English menus only for demo |
 | Nutritional database integration | LLM estimates calories from descriptions |
 | Restaurant discovery / location | User is already at the restaurant |
@@ -80,28 +80,28 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| MENU-01 | — | Pending |
-| MENU-02 | — | Pending |
-| MOOD-01 | — | Pending |
-| MOOD-02 | — | Pending |
-| RECO-01 | — | Pending |
-| RECO-02 | — | Pending |
-| RECO-03 | — | Pending |
-| ORDR-01 | — | Pending |
-| ORDR-02 | — | Pending |
-| FILT-01 | — | Pending |
-| FILT-02 | — | Pending |
-| FILT-03 | — | Pending |
-| POST-01 | — | Pending |
-| POST-02 | — | Pending |
-| FOUN-01 | — | Pending |
-| FOUN-02 | — | Pending |
+| FOUN-01 | Phase 1 | Pending |
+| FOUN-02 | Phase 1 | Pending |
+| MENU-01 | Phase 2 | Pending |
+| MENU-02 | Phase 2 | Pending |
+| MOOD-01 | Phase 3 | Pending |
+| MOOD-02 | Phase 3 | Pending |
+| RECO-01 | Phase 3 | Pending |
+| RECO-02 | Phase 3 | Pending |
+| RECO-03 | Phase 3 | Pending |
+| ORDR-01 | Phase 3 | Pending |
+| ORDR-02 | Phase 3 | Pending |
+| FILT-01 | Phase 4 | Pending |
+| FILT-02 | Phase 4 | Pending |
+| FILT-03 | Phase 4 | Pending |
+| POST-01 | Phase 4 | Pending |
+| POST-02 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16 ⚠️
+- Mapped to phases: 16
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-04*
-*Last updated: 2026-03-04 after initial definition*
+*Last updated: 2026-03-05 after roadmap creation*
