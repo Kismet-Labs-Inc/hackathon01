@@ -7,4 +7,7 @@ export interface Recommendation {
   reasoning: string;
   moodId: string;
   saved: boolean;
+  foodEmoji?: string;
+  crowdFavePercent?: number;
+  popularityTag?: string;
 }
