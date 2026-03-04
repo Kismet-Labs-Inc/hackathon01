@@ -43,10 +43,11 @@ Plans:
   2. App sends the photo to Gemini and receives structured JSON with dish names, prices, and descriptions
   3. Parsed menu items are stored in the menu Zustand store and the app navigates to the Mood screen showing item count
   4. The exact demo menu has been tested through the pipeline and produces clean, usable output
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
+- [ ] 02-01-PLAN.md -- Install deps, Zustand menu store, Gemini API service, fallback cache, menu parser
+- [ ] 02-02-PLAN.md -- Complete scan screen UI with camera, gallery, processing animation, count-up, and auto-advance
 
 ### Phase 3: Recommendations & Ordering
 **Goal**: User completes the full demo loop -- pick a mood, see AI recommendations, save items, view order summary
@@ -85,6 +86,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
-| 2. Menu Scanning | 0/? | Not started | - |
+| 2. Menu Scanning | 0/2 | Not started | - |
 | 3. Recommendations & Ordering | 0/? | Not started | - |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |
