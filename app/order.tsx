@@ -18,16 +18,13 @@ export default function OrderScreen() {
         <Text style={styles.description}>Your picks summary</Text>
       </View>
 
-      {/* Restart Demo button */}
+      {/* Restart Demo link */}
       <View style={[styles.bottomAction, { paddingBottom: insets.bottom + 24 }]}>
         <Pressable
           onPress={() => router.replace("/scan")}
-          style={({ pressed }) => [
-            styles.restartButton,
-            pressed && styles.restartButtonPressed,
-          ]}
+          style={({ pressed }) => [pressed && styles.nextPressed]}
         >
-          <Text style={styles.restartButtonText}>Restart Demo</Text>
+          <Text style={styles.nextText}>Restart Demo</Text>
         </Pressable>
       </View>
     </View>
@@ -60,18 +57,10 @@ const styles = StyleSheet.create({
   bottomAction: {
     paddingHorizontal: 24,
   },
-  restartButton: {
-    backgroundColor: colors.coral,
-    borderRadius: 9999,
-    height: 48,
-    alignItems: "center",
-    justifyContent: "center",
+  nextPressed: {
+    opacity: 0.5,
   },
-  restartButtonPressed: {
-    transform: [{ scale: 0.97 }],
-    opacity: 0.9,
-  },
-  restartButtonText: {
+  nextText: {
     color: colors.white,
     fontSize: 16,
     fontFamily: "PlusJakartaSans_600SemiBold",

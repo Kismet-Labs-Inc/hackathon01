@@ -18,16 +18,13 @@ export default function ResultsScreen() {
         <Text style={styles.description}>AI-matched recommendations</Text>
       </View>
 
-      {/* Next button */}
+      {/* Next link */}
       <View style={[styles.bottomAction, { paddingBottom: insets.bottom + 24 }]}>
         <Pressable
           onPress={() => router.push("/order")}
-          style={({ pressed }) => [
-            styles.nextButton,
-            pressed && styles.nextButtonPressed,
-          ]}
+          style={({ pressed }) => [pressed && styles.nextPressed]}
         >
-          <Text style={styles.nextButtonText}>Next: Order Summary</Text>
+          <Text style={styles.nextText}>Next: Order Summary</Text>
         </Pressable>
       </View>
     </View>
@@ -60,18 +57,10 @@ const styles = StyleSheet.create({
   bottomAction: {
     paddingHorizontal: 24,
   },
-  nextButton: {
-    backgroundColor: colors.coral,
-    borderRadius: 9999,
-    height: 48,
-    alignItems: "center",
-    justifyContent: "center",
+  nextPressed: {
+    opacity: 0.5,
   },
-  nextButtonPressed: {
-    transform: [{ scale: 0.97 }],
-    opacity: 0.9,
-  },
-  nextButtonText: {
+  nextText: {
     color: colors.white,
     fontSize: 16,
     fontFamily: "PlusJakartaSans_600SemiBold",

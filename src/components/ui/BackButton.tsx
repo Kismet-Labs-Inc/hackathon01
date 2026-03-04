@@ -1,4 +1,4 @@
-import { Pressable, Text, StyleSheet } from "react-native";
+import { Pressable, Text, View, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -11,40 +11,39 @@ export function BackButton({ onPress }: BackButtonProps) {
   const insets = useSafeAreaInsets();
 
   return (
-    <Pressable
-      onPress={onPress ?? (() => router.back())}
-      style={({ pressed }) => [
-        styles.button,
-        { top: insets.top + 8 },
-        pressed && styles.pressed,
-      ]}
-      accessibilityRole="button"
-      accessibilityLabel="Go back"
-    >
-      <Text style={styles.chevron}>{"\u2039"}</Text>
-    </Pressable>
+    <View style={[styles.row, { paddingTop: insets.top + 8 }]}>
+      <Pressable
+        onPress={onPress ?? (() => router.back())}
+        style={({ pressed }) => [
+          styles.button,
+          pressed && styles.pressed,
+        ]}
+        accessibilityRole="button"
+        accessibilityLabel="Go back"
+      >
+        <Text style={styles.chevron}>{"\u2039"}</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  row: {
+    paddingHorizontal: 16,
+    paddingBottom: 8,
+  },
   button: {
-    position: "absolute",
-    left: 16,
-    zIndex: 10,
     width: 44,
     height: 44,
-    borderRadius: 22,
-    backgroundColor: "rgba(26, 26, 26, 0.8)",
     alignItems: "center",
     justifyContent: "center",
   },
   pressed: {
-    opacity: 0.7,
+    opacity: 0.5,
   },
   chevron: {
     color: "#FFFFFF",
-    fontSize: 28,
-    lineHeight: 30,
-    marginTop: -2,
+    fontSize: 32,
+    lineHeight: 34,
   },
 });

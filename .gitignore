@@ -26,5 +26,8 @@ web-build/
 .env
 .env*.local
 
+# local Claude preferences
+.claude/settings.local.json
+
 # designs
 ux/

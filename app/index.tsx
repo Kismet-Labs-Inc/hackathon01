@@ -11,7 +11,6 @@ import Animated, {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { colors } from "@/theme/tokens";
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 export default function WelcomeScreen() {
   const router = useRouter();
@@ -75,18 +74,17 @@ export default function WelcomeScreen() {
       {/* Spacer pushes CTA to bottom */}
       <View style={styles.spacer} />
 
-      {/* CTA button */}
-      <Animated.View style={ctaAnimatedStyle}>
-        <AnimatedPressable
+      {/* CTA area */}
+      <Animated.View style={[ctaAnimatedStyle, { alignSelf: "stretch", alignItems: "center" }]}>
+        <Pressable
           onPress={() => router.push("/scan")}
           style={({ pressed }) => [
-            styles.ctaButton,
-            pressed && styles.ctaButtonPressed,
+            styles.ctaArea,
+            pressed && styles.ctaAreaPressed,
           ]}
         >
-          <Text style={styles.ctaIcon}>{"📷"}</Text>
           <Text style={styles.ctaText}>Scan a Menu</Text>
-        </AnimatedPressable>
+        </Pressable>
       </Animated.View>
 
       {/* Subtext */}
@@ -140,29 +138,20 @@ const styles = StyleSheet.create({
   spacer: {
     flex: 1,
   },
-  ctaButton: {
-    backgroundColor: colors.coral,
-    borderRadius: 9999,
-    height: 56,
-    flexDirection: "row",
+  ctaArea: {
     alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
-    minWidth: 340,
-    paddingHorizontal: 24,
   },
-  ctaButtonPressed: {
-    transform: [{ scale: 0.97 }],
-    opacity: 0.9,
+  ctaAreaPressed: {
+    opacity: 0.7,
   },
   ctaIcon: {
-    fontSize: 20,
-    marginRight: 10,
+    fontSize: 32,
+    marginBottom: 8,
   },
   ctaText: {
     color: colors.white,
-    fontSize: 18,
-    fontFamily: "PlusJakartaSans_600SemiBold",
+    fontSize: 22,
+    fontFamily: "PlusJakartaSans_700Bold",
   },
   subtext: {
     color: "rgba(255, 255, 255, 0.5)",
