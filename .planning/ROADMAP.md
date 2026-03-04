@@ -59,10 +59,12 @@ Plans:
   3. Surprise Me presents a single recommendation card with a reveal moment
   4. User can tap "I'll get this" on any recommendation card and see the saved state toggle on the card
   5. User can view an order summary screen showing all saved items with total cost and total calories
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md -- Recommendation store, Claude API service, fallback cache, mood selection screen
+- [ ] 03-02-PLAN.md -- Results screen with recommendation cards, save toggle, sticky bar, Surprise Me reveal
+- [ ] 03-03-PLAN.md -- Order summary screen with saved items, totals, and demo restart
 
 ### Phase 4: Extras & Demo Hardening
 **Goal**: Filters and post-meal features work, and the app is hardened for a live stage demo
@@ -87,5 +89,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Menu Scanning | 0/2 | Not started | - |
-| 3. Recommendations & Ordering | 0/? | Not started | - |
+| 3. Recommendations & Ordering | 0/3 | Not started | - |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |
