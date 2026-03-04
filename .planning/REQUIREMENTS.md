@@ -38,8 +38,8 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUN-01**: App uses dark theme matching Stitch mockups (#0A0A0A bg, #E8734A accent, Plus Jakarta Sans)
-- [ ] **FOUN-02**: App runs on a real phone via Expo
+- [x] **FOUN-01**: App uses dark theme matching Stitch mockups (#0A0A0A bg, #E8734A accent, Plus Jakarta Sans)
+- [x] **FOUN-02**: App runs on a real phone via Expo
 
 ## v2 Requirements
 
@@ -80,8 +80,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | Phase 1 | Pending |
-| FOUN-02 | Phase 1 | Pending |
+| FOUN-01 | Phase 1 | Complete |
+| FOUN-02 | Phase 1 | Complete |
 | MENU-01 | Phase 2 | Pending |
 | MENU-02 | Phase 2 | Pending |
 | MOOD-01 | Phase 3 | Pending |
