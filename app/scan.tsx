@@ -42,7 +42,7 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 export default function ScanScreen() {
   const router = useRouter();
-  const cameraRef = useRef<CameraView>(null);
+  const cameraRef = useRef<CameraView | null>(null);
   const [permission, requestPermission] = useCameraPermissions();
   const [screenState, setScreenState] = useState<ScreenState>("camera");
   const [photo, setPhoto] = useState<PhotoData | null>(null);
@@ -76,6 +76,21 @@ export default function ScanScreen() {
     }
   }, []);
 
+  const pickFromGallery = useCallback(async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: "images" as ImagePicker.MediaType,
+      quality: 0.6,
+      base64: true,
+    });
+    if (!result.canceled && result.assets[0]) {
+      setPhoto({
+        uri: result.assets[0].uri,
+        base64: result.assets[0].base64 ?? null,
+      });
+      setScreenState("preview");
+    }
+  }, []);
+
   const capturePhoto = useCallback(async () => {
     if (!cameraRef.current) return;
     try {
@@ -92,38 +107,23 @@ export default function ScanScreen() {
     }
   }, []);
 
-  const pickFromGallery = useCallback(async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: "images" as ImagePicker.MediaType,
-      quality: 0.6,
-      base64: true,
-    });
-    if (!result.canceled && result.assets[0]) {
-      setPhoto({
-        uri: result.assets[0].uri,
-        base64: result.assets[0].base64 ?? null,
-      });
-      setScreenState("preview");
-    }
-  }, []);
-
   const handleRetake = useCallback(() => {
     setPhoto(null);
     setScreenState("camera");
   }, []);
 
   const handleUseThis = useCallback(async () => {
-    if (!photo?.base64) return;
+    if (!photo) return;
     setScreenState("processing");
     store.setProcessing(true);
 
     try {
+      if (!photo.base64) return;
       const items = await parseMenuPhoto(photo.base64, GEMINI_API_KEY);
       store.setItems(items);
       setScreenState("success");
     } catch (err) {
       console.warn("[scan] parse error:", err);
-      // menuParser already falls back, but just in case
       store.setError(
         err instanceof Error ? err.message : "Unknown error"
       );
@@ -259,6 +259,7 @@ export default function ScanScreen() {
           </View>
         )}
 
+
         {/* Bottom controls */}
         <View style={styles.cameraControls}>
           {/* Gallery button */}
@@ -267,15 +268,15 @@ export default function ScanScreen() {
           </Pressable>
 
           {/* Capture button */}
-          <View style={styles.captureOuter}>
-            <Pressable
-              onPress={capturePhoto}
-              style={({ pressed }) => [
-                styles.captureButton,
-                pressed && styles.captureButtonPressed,
-              ]}
-            />
-          </View>
+          <Pressable
+            onPress={capturePhoto}
+            style={({ pressed }) => [
+              styles.captureOuter,
+              pressed && styles.captureButtonPressed,
+            ]}
+          >
+            <View style={styles.captureButton} />
+          </Pressable>
 
           {/* Spacer for symmetry */}
           <View style={styles.galleryButton} />
@@ -481,6 +482,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    zIndex: 50,
   },
   galleryButton: {
     width: 60,
@@ -513,19 +515,23 @@ const styles = StyleSheet.create({
   // Preview buttons
   previewButtons: {
     position: "absolute",
-    bottom: 60,
-    left: spacing.lg,
-    right: spacing.lg,
+    bottom: 0,
+    left: 0,
+    right: 0,
     flexDirection: "row",
-    gap: spacing.md,
+    justifyContent: "space-between",
+    paddingHorizontal: spacing.lg,
+    paddingBottom: 60,
+    paddingTop: spacing.xl,
+    backgroundColor: "rgba(10, 10, 10, 0.85)",
   },
   retakeButton: {
-    flex: 1,
     borderRadius: borderRadius.full,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: colors.coral,
     backgroundColor: "transparent",
     paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
     alignItems: "center",
   },
   retakeButtonText: {
@@ -534,10 +540,10 @@ const styles = StyleSheet.create({
     fontFamily: "PlusJakartaSans_600SemiBold",
   },
   useThisButton: {
-    flex: 1,
     borderRadius: borderRadius.full,
     backgroundColor: colors.coral,
     paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
     alignItems: "center",
   },
   useThisButtonText: {

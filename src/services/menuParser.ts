@@ -2,7 +2,7 @@ import type { MenuItem } from '@/types/menu';
 import { extractMenuItems, RawMenuItem } from '@/services/gemini';
 import { FALLBACK_MENU } from '@/constants/fallbackMenu';
 
-const TIMEOUT_MS = 15_000;
+const TIMEOUT_MS = 30_000;
 
 let forceFallback = false;
 
