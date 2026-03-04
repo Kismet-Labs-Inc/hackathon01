@@ -15,10 +15,8 @@ import Animated, {
   withTiming,
   withSpring,
   withRepeat,
-  withSequence,
   withDelay,
   Easing,
-  runOnJS,
   interpolate,
 } from "react-native-reanimated";
 import Constants from "expo-constants";
@@ -28,9 +26,8 @@ import { useRecommendationStore } from "@/stores/useRecommendationStore";
 import {
   generateRecommendations,
   toggleForceFallback,
-  isForceFallback,
 } from "@/services/claude";
-import { MOODS, type Mood } from "@/types/mood";
+import { MOODS } from "@/types/mood";
 import type { Recommendation } from "@/types/recommendation";
 import { colors, spacing, borderRadius } from "@/theme/tokens";
 
