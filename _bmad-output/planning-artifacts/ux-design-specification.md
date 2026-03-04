@@ -1,5 +1,8 @@
 ---
-stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+stepsCompleted: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+lastStep: 14
+workflowStatus: complete
+completionDate: '2026-03-04'
 inputDocuments:
   - '_bmad-output/planning-artifacts/prd.md'
   - '_bmad-output/planning-artifacts/prd-validation-report.md'
@@ -1077,3 +1080,133 @@ Welcome → [Capture] → Loading → Vibe Selector → Recommendations
 - Empty states use the same visual language as the rest of the app (dark theme, orange CTAs)
 - Tone remains friendly and helpful, not apologetic or technical
 - Partial results are always presented as useful ("I found 12 items") not broken ("Only 12 of 24 items readable")
+
+## Responsive Design & Accessibility
+
+### Responsive Strategy
+
+**Mobile-only for MVP with desktop demo wrapper.**
+
+Cravr is designed exclusively for mobile viewports (375px–430px). No tablet or desktop layouts are required for the product itself. However, the hackathon demo will be presented from a desktop browser, so a lightweight presentation wrapper is needed.
+
+**Mobile (375px–430px) — Primary:**
+- All screens designed for this viewport range
+- Full-width cards, single-column layout
+- Touch-optimized interactions (44px+ tap targets)
+- This is the only "real" responsive target
+
+**Desktop (1024px+) — Demo Wrapper Only:**
+- Centered phone-frame container (max-width: 430px, centered on dark background)
+- Simulated mobile viewport within the browser window
+- Optional: subtle device frame/bezel for presentation polish
+- No desktop-native layouts, no multi-column, no hover states beyond what mobile gets
+- Purpose: looks good on a projector during the hackathon demo
+
+**Tablet — Not supported:**
+- No tablet-specific layouts
+- If accessed on tablet, renders the mobile layout (acceptable)
+
+### Breakpoint Strategy
+
+**Single breakpoint approach:**
+
+| Breakpoint | Behavior |
+|------------|----------|
+| < 430px | Native mobile layout (full-width, no wrapper) |
+| ≥ 430px | Desktop demo wrapper — centered mobile frame on dark background |
+
+**Implementation:**
+```css
+/* Mobile-first: all styles target mobile by default */
+/* Desktop wrapper kicks in above mobile max-width */
+@media (min-width: 430px) {
+  .app-container {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100vh;
+    /* Optional: subtle shadow or border to frame the mobile view */
+  }
+  body {
+    background: #000000; /* Dark surround for the demo */
+  }
+}
+```
+
+**No complex breakpoint system needed.** The app is one layout at one size, optionally centered on larger screens.
+
+### Accessibility Strategy
+
+**Target: WCAG 2.1 Level AA**
+
+Pragmatic AA compliance appropriate for a hackathon MVP. The goal is building accessible habits into the codebase from day one, not achieving certification.
+
+**Accessibility priorities for Cravr (ordered by impact):**
+
+| Priority | Area | Implementation |
+|----------|------|----------------|
+| 1 | Touch targets | All interactive elements ≥ 44x44px — already specified in component strategy |
+| 2 | Color contrast | All text meets 4.5:1 ratio — already validated in visual foundation |
+| 3 | Semantic HTML | Use `<button>`, `<main>`, `<nav>`, `<h1>`-`<h3>`, `<ul>`/`<li>` — not div soup |
+| 4 | Screen reader labels | aria-labels on emoji vibe cards, match scores, flavor tags, loading states |
+| 5 | Keyboard navigation | Tab through interactive elements in logical order; Enter/Space to activate |
+| 6 | Focus indicators | Visible focus ring on all interactive elements (orange outline matching accent) |
+| 7 | Motion sensitivity | Respect `prefers-reduced-motion` — disable card animations, loading transitions |
+| 8 | Image alt text | Not applicable for MVP (no food photos on cards) |
+
+**Cravr-specific accessibility considerations:**
+
+- **Emoji in vibe selector:** Emoji are decorative — screen readers should announce the label text ("Comfort Food"), not the emoji character
+- **Match score badges:** Announced as "96 percent match" not "96% MATCH" (avoid abbreviation confusion)
+- **Flavor tags:** Wrapped in a list with aria-label="Flavor profile" so screen readers announce them as a group
+- **NarrativeLoader:** Uses aria-live="polite" to announce stage changes without interrupting the user
+- **Color-coded flavor tags:** Color is supplementary — flavor name text is always present as the primary signal
+
+### Testing Strategy
+
+**Hackathon-realistic testing approach:**
+
+| Test Type | Method | When |
+|-----------|--------|------|
+| Mobile rendering | Chrome DevTools device emulation (iPhone 14, Pixel 7) | During development |
+| Real device | Test on at least 1 Android phone + 1 iPhone | Before demo |
+| Desktop demo | Test centered wrapper on Chrome desktop at 1920x1080 | Before demo |
+| Color contrast | Run Lighthouse accessibility audit | Once before demo |
+| Keyboard nav | Tab through full flow without mouse | Once before demo |
+| Screen reader | Quick test with VoiceOver (macOS) on core flow | Stretch goal |
+
+**Automated checks (integrate early):**
+- ESLint `jsx-a11y` plugin — catches missing aria-labels, empty alt text, non-semantic elements during development
+- Lighthouse accessibility score — target ≥ 90
+
+### Implementation Guidelines
+
+**For developers:**
+
+**Semantic HTML checklist:**
+- `<main>` wraps each screen's content
+- `<h1>` for screen titles ("What's the vibe?", recommendation count)
+- `<h2>` for dish names on recommendation cards
+- `<button>` for all clickable elements (not `<div onClick>`)
+- `<ul>` / `<li>` for recommendation card list and flavor tag lists
+- `role="tablist"` / `role="tab"` for VibeChipBar
+
+**Focus management:**
+- When transitioning between screens, move focus to the new screen's primary heading
+- When NarrativeLoader completes, move focus to vibe selector heading
+- When vibe chip is tapped, move focus to first recommendation card
+- Visible focus ring: 2px solid orange (#E8854A), 2px offset
+
+**CSS approach:**
+- Mobile-first styles (no media query = mobile)
+- Single `min-width: 430px` media query for desktop demo wrapper
+- Use Tailwind responsive utilities: default = mobile, `sm:` or custom breakpoint = desktop wrapper
+- `prefers-reduced-motion` media query to disable transitions and animations
+
+**Desktop demo wrapper component:**
+```
+<div class="min-h-screen bg-black flex items-center justify-center">
+  <div class="w-full max-w-[430px] min-h-screen sm:min-h-0 sm:h-[932px] sm:rounded-3xl sm:overflow-hidden sm:shadow-2xl">
+    {/* App content */}
+  </div>
+</div>
+```
