@@ -12,7 +12,7 @@ Four-phase hackathon build delivering the "Scan. Vibe. Devour." loop on a real p
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Expo project scaffold, design system, typed interfaces, Welcome screen
+- [x] **Phase 1: Foundation** - Expo project scaffold, design system, typed interfaces, Welcome screen (completed 2026-03-04)
 - [ ] **Phase 2: Menu Scanning** - Camera/gallery photo capture, Gemini OCR pipeline, structured menu data
 - [ ] **Phase 3: Recommendations & Ordering** - Mood selection, AI recommendations, save items, order summary -- the complete demo loop
 - [ ] **Phase 4: Extras & Demo Hardening** - Filters, post-meal rating, cached fallbacks, visual polish for stage
@@ -31,8 +31,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Expo scaffold, design system tokens, TypeScript interfaces, navigation skeleton
-- [ ] 01-02-PLAN.md -- Polished Welcome screen matching Stitch mockup, styled placeholder screens
+- [x] 01-01-PLAN.md -- Expo scaffold, design system tokens, TypeScript interfaces, navigation skeleton
+- [x] 01-02-PLAN.md -- Polished Welcome screen matching Stitch mockup, styled placeholder screens
 
 ### Phase 2: Menu Scanning
 **Goal**: User can photograph a restaurant menu and see it parsed into structured dish data
@@ -84,7 +84,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Planning complete | - |
+| 1. Foundation | 2/2 | Complete   | 2026-03-04 |
 | 2. Menu Scanning | 0/? | Not started | - |
 | 3. Recommendations & Ordering | 0/? | Not started | - |
 | 4. Extras & Demo Hardening | 0/? | Not started | - |
