@@ -10,7 +10,7 @@ Requirements for hackathon prototype. Each maps to roadmap phases.
 ### Menu Input
 
 - [ ] **MENU-01**: User can photograph a menu using camera or gallery
-- [ ] **MENU-02**: App parses menu photo into structured items (name, price, description) via Gemini OCR
+- [x] **MENU-02**: App parses menu photo into structured items (name, price, description) via Gemini OCR
 
 ### Mood & Recommendations
 
@@ -83,7 +83,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FOUN-01 | Phase 1 | Complete |
 | FOUN-02 | Phase 1 | Complete |
 | MENU-01 | Phase 2 | Pending |
-| MENU-02 | Phase 2 | Pending |
+| MENU-02 | Phase 2 | Complete |
 | MOOD-01 | Phase 3 | Pending |
 | MOOD-02 | Phase 3 | Pending |
 | RECO-01 | Phase 3 | Pending |
