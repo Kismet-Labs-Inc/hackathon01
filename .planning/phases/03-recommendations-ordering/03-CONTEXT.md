@@ -58,6 +58,7 @@ User completes the full demo loop — pick a mood from 6 cards (or Surprise Me),
 <specifics>
 ## Specific Ideas
 
+- **DESIGN.md is required reading** — all UI work must use tokens, typography, and spacing from DESIGN.md (per CLAUDE.md)
 - Stitch mood mockup (3-mood-stitch.png): 2x3 grid with dark cards, emoji + label + description, "Surprise me" at bottom
 - Stitch results mockup (4-results-stitch.png): Scrollable cards with food images (adapt to emojis), match %, "I'll get this" button
 - Stitch save-items mockup (5-save-items-stitch.png): Same cards with "Saved" toggle state, sticky bottom bar "2 items saved | View order >"
