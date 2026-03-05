@@ -30,6 +30,7 @@ interface ClaudeRawReco {
   foodEmoji: string;
   crowdFavePercent: number;
   popularityTag: string;
+  estimatedCalories: number;
 }
 
 function buildSystemPrompt(menuItems: MenuItem[], moodId: string): string {
@@ -58,6 +59,7 @@ Return ONLY a valid JSON array (no markdown, no explanation) with objects contai
 - foodEmoji: string (single food emoji matching the dish type, e.g. "🍗")
 - crowdFavePercent: number (60-95, a plausible fake popularity percentage)
 - popularityTag: string (one of: "Chef's Pick", "Hidden Gem", "Crowd Fave")
+- estimatedCalories: number (your best estimate of total calories for the dish, e.g. 450)
 
 Sort by matchPercent descending. Be creative and fun with your reasoning -- this is for a food app that wants to make people smile.`;
 }
@@ -117,8 +119,11 @@ export async function generateRecommendations(
       return buildFallbackRecommendations(menuItems, moodId);
     }
 
-    // Parse the JSON array from Claude's response
-    const rawRecos: ClaudeRawReco[] = JSON.parse(text);
+    // Strip markdown code fences if present
+    const cleaned = text.replace(/^```(?:json)?\s*\n?/i, '').replace(/\n?```\s*$/i, '').trim();
+    console.log('[claude] Raw response (first 200 chars):', cleaned.slice(0, 200));
+
+    const rawRecos: ClaudeRawReco[] = JSON.parse(cleaned);
 
     if (!Array.isArray(rawRecos) || rawRecos.length === 0) {
       console.warn('[claude] Invalid or empty recommendation array');
@@ -130,17 +135,23 @@ export async function generateRecommendations(
 
     const recommendations: Recommendation[] = rawRecos
       .filter((raw) => menuMap.has(raw.menuItemId))
-      .map((raw, index) => ({
-        id: `claude-${moodId}-${index}`,
-        item: menuMap.get(raw.menuItemId)!,
-        matchPercent: Math.min(99, Math.max(70, raw.matchPercent)),
-        reasoning: raw.reasoning,
-        moodId,
-        saved: false,
-        foodEmoji: raw.foodEmoji,
-        crowdFavePercent: Math.min(95, Math.max(60, raw.crowdFavePercent)),
-        popularityTag: raw.popularityTag,
-      }));
+      .map((raw, index) => {
+        const menuItem = menuMap.get(raw.menuItemId)!;
+        return {
+          id: `claude-${moodId}-${index}`,
+          item: {
+            ...menuItem,
+            calories: menuItem.calories ?? raw.estimatedCalories ?? null,
+          },
+          matchPercent: Math.min(99, Math.max(70, raw.matchPercent)),
+          reasoning: raw.reasoning,
+          moodId,
+          saved: false,
+          foodEmoji: raw.foodEmoji,
+          crowdFavePercent: Math.min(95, Math.max(60, raw.crowdFavePercent)),
+          popularityTag: raw.popularityTag,
+        };
+      });
 
     // If no valid matches were found, fall back
     if (recommendations.length === 0) {

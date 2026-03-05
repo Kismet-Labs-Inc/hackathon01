@@ -545,8 +545,9 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: "row",
     alignItems: "center",
-    paddingHorizontal: SCREEN_PADDING,
-    marginBottom: spacing.xs,
+    paddingHorizontal: SCREEN_PADDING - 12,
+    marginBottom: spacing.sm,
+    gap: spacing.xs,
   },
   header: {
     marginBottom: spacing.lg,
