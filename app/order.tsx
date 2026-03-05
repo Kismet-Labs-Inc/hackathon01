@@ -9,7 +9,9 @@ import { colors, spacing, borderRadius } from "@/theme/tokens";
 export default function OrderScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const savedItems = useRecommendationStore((s) => s.getSavedItems());
+  const savedItems = useRecommendationStore((s) =>
+    s.recommendations.filter((r) => r.saved)
+  );
   const clearRecommendations = useRecommendationStore((s) => s.clear);
   const clearMenu = useMenuStore((s) => s.clear);
 
@@ -75,7 +77,7 @@ export default function OrderScreen() {
                 </View>
               </View>
               <Text style={styles.itemPrice}>
-                ${rec.item.price.toFixed(2)}
+                ₱{rec.item.price.toFixed(2)}
               </Text>
             </View>
           ))}
@@ -83,7 +85,7 @@ export default function OrderScreen() {
           {/* Totals section */}
           <View style={styles.separator} />
           <Text style={styles.totalLabel}>ESTIMATED TOTAL</Text>
-          <Text style={styles.totalCost}>${totalCost.toFixed(2)}</Text>
+          <Text style={styles.totalCost}>₱{totalCost.toFixed(2)}</Text>
           <Text style={styles.totalCalories}>
             ~{totalCalories.toLocaleString()} cal
           </Text>

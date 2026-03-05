@@ -128,7 +128,7 @@ function RecommendationCard({
       {/* Price + Calories */}
       <View style={styles.priceRow}>
         <Text style={styles.priceText}>
-          ${rec.item.price.toFixed(2)}
+          ₱{rec.item.price.toFixed(2)}
         </Text>
         {rec.item.calories != null && (
           <Text style={styles.calorieText}> | {rec.item.calories} cal</Text>
