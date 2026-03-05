@@ -34,3 +34,4 @@ src/constants/apiKeys.ts
 
 # designs
 ux/
+.vercel

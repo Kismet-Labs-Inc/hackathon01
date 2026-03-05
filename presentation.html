@@ -196,13 +196,70 @@
     flex-shrink: 0;
   }
 
-  /* ===== SLIDE 3: How It Works ===== */
+  /* ===== SLIDE 3: Design Evolution ===== */
   .slide-3 {
+    text-align: center;
+    gap: 40px;
+  }
+
+  .slide-3 h2 {
+    font-size: 44px;
+    font-weight: 700;
+  }
+
+  .slide-3 .evolution-subtitle {
+    font-size: 18px;
+    color: var(--ash);
+    margin-top: -16px;
+  }
+
+  .slide-3 .evolution-subtitle span { color: var(--coral); font-weight: 600; }
+
+  .phone-comparison {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phone-frame {
+    text-align: center;
+  }
+
+  .phone-frame img {
+    height: 520px;
+    border-radius: 24px;
+    border: 2px solid #333;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .phone-frame .label {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .phone-frame .label-desc {
+    font-size: 13px;
+    color: var(--ash);
+    margin-top: 4px;
+  }
+
+  .phone-frame.before .label { color: var(--ash); }
+  .phone-frame.after .label { color: var(--mint); }
+
+  .evolution-arrow {
+    font-size: 40px;
+    color: var(--coral);
+  }
+
+  /* ===== SLIDE 4: How It Works ===== */
+  .slide-4 {
     text-align: center;
     gap: 48px;
   }
 
-  .slide-3 h2 {
+  .slide-4 h2 {
     font-size: 44px;
     font-weight: 700;
   }
@@ -317,8 +374,27 @@
   </div>
 </div>
 
-<!-- Slide 3: How It Works -->
+<!-- Slide 3: Design Evolution -->
 <div class="slide slide-3" data-slide="3">
+  <h2>From Code to Craft</h2>
+  <div class="evolution-subtitle">AI-generated UI refined with <span>Stitch</span> design tooling</div>
+  <div class="phone-comparison">
+    <div class="phone-frame before">
+      <img src="image%20(10).png" alt="Before — text-only recommendations">
+      <div class="label">Before</div>
+      <div class="label-desc">Claude-generated layout</div>
+    </div>
+    <div class="evolution-arrow">→</div>
+    <div class="phone-frame after">
+      <img src="image%20(11).png" alt="After — Stitch-polished with food photos">
+      <div class="label">After</div>
+      <div class="label-desc">Polished with Stitch</div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: How It Works -->
+<div class="slide slide-4" data-slide="4">
   <h2>How It Works</h2>
   <div class="flow">
     <div class="step">
@@ -353,7 +429,7 @@
 </div>
 
 <!-- Navigation -->
-<div class="slide-counter"><span id="current">1</span> / <span id="total">3</span></div>
+<div class="slide-counter"><span id="current">1</span> / <span id="total">4</span></div>
 <div class="nav">
   <button onclick="navigate(-1)">← Prev</button>
   <button onclick="navigate(1)">Next →</button>
@@ -362,7 +438,7 @@
 
 <script>
   let current = 1;
-  const total = 3;
+  const total = 4;
 
   function navigate(dir) {
     const next = current + dir;
