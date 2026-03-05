@@ -7,7 +7,7 @@ import {
   Dimensions,
   ScrollView,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, useFocusEffect } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
   useSharedValue,
@@ -73,6 +73,14 @@ export default function MoodScreen() {
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const navigatingRef = useRef(false);
+
+  // Reset selection state when returning to this screen
+  useFocusEffect(
+    useCallback(() => {
+      navigatingRef.current = false;
+      setSelectedId(null);
+    }, [])
+  );
 
   const handleSelectMood = useCallback(
     (mood: Mood, isSurprise: boolean) => {

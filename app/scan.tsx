@@ -439,7 +439,7 @@ const styles = StyleSheet.create({
   // Hint text
   hintContainer: {
     position: "absolute",
-    bottom: SCREEN_HEIGHT * 0.28,
+    bottom: SCREEN_HEIGHT * 0.18,
     left: 0,
     right: 0,
     alignItems: "center",

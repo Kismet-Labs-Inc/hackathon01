@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { View, Text, Pressable, ScrollView, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -9,8 +10,10 @@ import { colors, spacing, borderRadius } from "@/theme/tokens";
 export default function OrderScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const savedItems = useRecommendationStore((s) =>
-    s.recommendations.filter((r) => r.saved)
+  const recommendations = useRecommendationStore((s) => s.recommendations);
+  const savedItems = useMemo(
+    () => recommendations.filter((r) => r.saved),
+    [recommendations]
   );
   const clearRecommendations = useRecommendationStore((s) => s.clear);
   const clearMenu = useMenuStore((s) => s.clear);
