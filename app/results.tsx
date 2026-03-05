@@ -19,7 +19,6 @@ import Animated, {
   Easing,
   interpolate,
 } from "react-native-reanimated";
-import Constants from "expo-constants";
 import { BackArrow } from "@/components/ui/BackArrow";
 import { useMenuStore } from "@/stores/useMenuStore";
 import { useRecommendationStore } from "@/stores/useRecommendationStore";
@@ -362,14 +361,10 @@ export default function ResultsScreen() {
     if (!selectedMoodId) return;
     setLoading(true);
 
-    const apiKey =
-      Constants.expoConfig?.extra?.anthropicApiKey ?? "";
-
     try {
       const results = await generateRecommendations(
         menuItems,
-        selectedMoodId,
-        apiKey
+        selectedMoodId
       );
       setRecommendations(results);
 

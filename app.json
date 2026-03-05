@@ -36,9 +36,6 @@
     "plugins": [
       "expo-router",
       "expo-font"
-    ],
-    "extra": {
-      "anthropicApiKey": ""
-    }
+    ]
   }
 }

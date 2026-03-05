@@ -6,6 +6,7 @@
 import type { MenuItem } from '@/types/menu';
 import type { Recommendation } from '@/types/recommendation';
 import { buildFallbackRecommendations } from '@/constants/fallbackRecommendations';
+import { ANTHROPIC_API_KEY } from '@/constants/apiKeys';
 
 const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
 const MODEL = 'claude-haiku-4-5-20251001';
@@ -70,10 +71,9 @@ Sort by matchPercent descending. Be creative and fun with your reasoning -- this
  */
 export async function generateRecommendations(
   menuItems: MenuItem[],
-  moodId: string,
-  apiKey: string
+  moodId: string
 ): Promise<Recommendation[]> {
-  if (forceFallback || !apiKey) {
+  if (forceFallback || !ANTHROPIC_API_KEY) {
     return buildFallbackRecommendations(menuItems, moodId);
   }
 
@@ -85,7 +85,7 @@ export async function generateRecommendations(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
+        'x-api-key': ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
         'anthropic-dangerous-direct-browser-access': 'true',
       },
