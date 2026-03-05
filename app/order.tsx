@@ -80,18 +80,25 @@ export default function OrderScreen() {
                 </View>
               </View>
               <Text style={styles.itemPrice}>
-                ₱{rec.item.price.toFixed(2)}
+                ₱{rec.item.price.toLocaleString()}
               </Text>
             </View>
           ))}
 
           {/* Totals section */}
           <View style={styles.separator} />
-          <Text style={styles.totalLabel}>ESTIMATED TOTAL</Text>
-          <Text style={styles.totalCost}>₱{totalCost.toFixed(2)}</Text>
-          <Text style={styles.totalCalories}>
-            ~{totalCalories.toLocaleString()} cal
-          </Text>
+          <View style={styles.totalsRow}>
+            <View>
+              <Text style={styles.totalLabel}>ESTIMATED TOTAL</Text>
+              <Text style={styles.totalCost}>₱{totalCost.toLocaleString()}</Text>
+            </View>
+            <View style={styles.totalsRight}>
+              <Text style={styles.totalLabel}>TOTAL CALORIES</Text>
+              <Text style={styles.totalCalories}>
+                {totalCalories.toLocaleString()} cal
+              </Text>
+            </View>
+          </View>
 
           {/* Restart button */}
           <Pressable
@@ -142,7 +149,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: spacing.lg,
-    paddingTop: 100,
+    paddingTop: spacing.sm,
   },
   /* Header */
   header: {
@@ -186,6 +193,7 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontSize: 16,
     fontFamily: "PlusJakartaSans_700Bold",
+    textTransform: "uppercase",
   },
   itemCalories: {
     color: colors.gray,
@@ -204,6 +212,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grayDark,
     marginVertical: spacing.lg,
   },
+  totalsRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: spacing.xl,
+  },
+  totalsRight: {
+    alignItems: "flex-end",
+  },
   totalLabel: {
     color: colors.gray,
     fontSize: 12,
@@ -212,16 +228,14 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   totalCost: {
-    color: colors.white,
-    fontSize: 30,
+    color: colors.coral,
+    fontSize: 24,
     fontFamily: "PlusJakartaSans_700Bold",
-    marginBottom: spacing.xs,
   },
   totalCalories: {
-    color: colors.gray,
-    fontSize: 16,
-    fontFamily: "PlusJakartaSans_400Regular",
-    marginBottom: spacing.xl,
+    color: colors.coral,
+    fontSize: 24,
+    fontFamily: "PlusJakartaSans_700Bold",
   },
   /* Restart button */
   restartButton: {

@@ -20,7 +20,7 @@ import Animated, {
   interpolate,
 } from "react-native-reanimated";
 import Constants from "expo-constants";
-import { BackButton } from "@/components/ui/BackButton";
+import { BackArrow } from "@/components/ui/BackArrow";
 import { useMenuStore } from "@/stores/useMenuStore";
 import { useRecommendationStore } from "@/stores/useRecommendationStore";
 import {
@@ -128,7 +128,7 @@ function RecommendationCard({
       {/* Price + Calories */}
       <View style={styles.priceRow}>
         <Text style={styles.priceText}>
-          ₱{rec.item.price.toFixed(2)}
+          ₱{rec.item.price.toLocaleString()}
         </Text>
         {rec.item.calories != null && (
           <Text style={styles.calorieText}> | {rec.item.calories} cal</Text>
@@ -426,7 +426,9 @@ export default function ResultsScreen() {
   if (isLoading) {
     return (
       <View style={styles.containerWarm}>
-        <BackButton />
+        <View style={[styles.headerRow, { paddingTop: insets.top + spacing.sm }]}>
+          <BackArrow />
+        </View>
         <LoadingState moodEmoji={moodEmoji || "\u2728"} />
       </View>
     );
@@ -437,21 +439,21 @@ export default function ResultsScreen() {
   if (isSurprise) {
     return (
       <View style={styles.containerWarm}>
-        <BackButton />
         <ScrollView
           style={styles.scrollView}
           contentContainerStyle={[
             styles.scrollContent,
-            { paddingBottom: savedCount > 0 ? 120 : insets.bottom + spacing.xl },
+            { paddingTop: insets.top + spacing.sm, paddingBottom: savedCount > 0 ? 120 : insets.bottom + spacing.xl },
           ]}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.header}>
+          <View style={styles.headerRow}>
+            <BackArrow />
             <View style={styles.moodPill}>
-              <Text style={styles.moodPillText}>
-                {moodEmoji} {moodLabel}
-              </Text>
+              <Text style={styles.moodPillText}>🎲 Surprise Me</Text>
             </View>
+          </View>
+          <View style={styles.header}>
             <Pressable onPress={handleTripleTap}>
               <Text style={styles.heading}>Surprise Me</Text>
             </Pressable>
@@ -480,22 +482,24 @@ export default function ResultsScreen() {
 
   return (
     <View style={styles.containerWarm}>
-      <BackButton />
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={[
           styles.scrollContent,
-          { paddingBottom: savedCount > 0 ? 120 : insets.bottom + spacing.xl },
+          { paddingTop: insets.top + spacing.sm, paddingBottom: savedCount > 0 ? 120 : insets.bottom + spacing.xl },
         ]}
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
-        <View style={styles.header}>
+        <View style={styles.headerRow}>
+          <BackArrow />
           <View style={styles.moodPill}>
             <Text style={styles.moodPillText}>
               {moodEmoji} {moodLabel}
             </Text>
           </View>
+        </View>
+        <View style={styles.header}>
           <Pressable onPress={handleTripleTap}>
             <Text style={styles.heading}>Your picks</Text>
           </Pressable>
@@ -536,6 +540,13 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: SCREEN_PADDING,
+    paddingTop: spacing.sm,
+  },
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: SCREEN_PADDING,
+    marginBottom: spacing.xs,
   },
   header: {
     marginBottom: spacing.lg,

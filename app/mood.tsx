@@ -133,10 +133,10 @@ export default function MoodScreen() {
       >
         {/* Header */}
         <View style={styles.header}>
+          <Text style={styles.heading}>What's the vibe?</Text>
           <Text style={styles.itemCount}>
             We found {itemCount} items on this menu.
           </Text>
-          <Text style={styles.heading}>What's the vibe?</Text>
         </View>
 
         {/* Mood Grid */}

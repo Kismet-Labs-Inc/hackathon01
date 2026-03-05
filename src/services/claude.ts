@@ -8,7 +8,7 @@ import type { Recommendation } from '@/types/recommendation';
 import { buildFallbackRecommendations } from '@/constants/fallbackRecommendations';
 
 const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
-const MODEL = 'claude-opus-4-6';
+const MODEL = 'claude-haiku-4-5-20251001';
 const TIMEOUT_MS = 20_000;
 
 let forceFallback = false;

@@ -28,7 +28,7 @@ const EXTRACTION_PROMPT = `You are a menu extraction assistant. Extract ALL menu
 For each item, provide:
 - name (required): The dish name exactly as written
 - description: A brief description if visible
-- price: The numeric price (e.g. 12.99). Use null if not visible.
+- price: The numeric price as a whole number in the menu's local currency (e.g. 3450 for ₱3,450 or 299 for ₱299). Do NOT divide or convert — use the exact number shown. Use null if not visible.
 - category: The menu section/category (e.g. "Appetizers", "Mains", "Desserts")
 
 Include every item you can see, even if some fields are missing. Preserve the original category groupings from the menu.`;

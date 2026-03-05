@@ -8,7 +8,7 @@ import {
   Dimensions,
   TextInput,
 } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, useFocusEffect } from "expo-router";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import * as ImagePicker from "expo-image-picker";
 import Animated, {
@@ -47,6 +47,14 @@ export default function ScanScreen() {
   const [screenState, setScreenState] = useState<ScreenState>("camera");
   const [photo, setPhoto] = useState<PhotoData | null>(null);
   const store = useMenuStore();
+
+  // Reset state when screen comes back into focus (e.g., from "Scan another menu")
+  useFocusEffect(
+    useCallback(() => {
+      setScreenState("camera");
+      setPhoto(null);
+    }, [])
+  );
 
   // Dev toggle: triple-tap tracking
   const tapTimestamps = useRef<number[]>([]);
@@ -162,7 +170,7 @@ export default function ScanScreen() {
       countValue.value = withTiming(target, { duration: 1000 });
 
       const timeout = setTimeout(() => {
-        router.push("/mood");
+        router.replace("/mood");
       }, 1500);
 
       return () => clearTimeout(timeout);
